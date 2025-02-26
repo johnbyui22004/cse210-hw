@@ -9,6 +9,7 @@ class Program
         Console.WriteLine("Please enter your name: ");
         string name = Console.ReadLine();
         Console.WriteLine($"{name}");
+        // indentation, lines and spaces don't matter on C#
 
     }
 }
