@@ -11,5 +11,14 @@ class Program
         Console.WriteLine($"{name}");
         // indentation, lines and spaces don't matter on C#
 
+        int x =10;
+
+        if(x != 10)
+        {
+            Console.WriteLine("x is not equal to 10");
+        }
+        else if (x == 10)
+        Console.WriteLine("x is equal to 10");
+
     }
 }
