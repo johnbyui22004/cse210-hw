@@ -1,24 +1,50 @@
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
+    public static int AddNumbe
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Sandbox World!");
-        Console.WriteLine("Hello CSE 210");
-        Console.WriteLine("Please enter your name: ");
-        string name = Console.ReadLine();
-        Console.WriteLine($"{name}");
-        // indentation, lines and spaces don't matter on C#
-
-        int x =10;
-
-        if(x != 10)
+/*         for (int i = 0; i < 20; i++)
         {
-            Console.WriteLine("x is not equal to 10");
-        }
-        else if (x == 10)
-        Console.WriteLine("x is equal to 10");
+            Console.WriteLine($"{i}: Bob");
 
+        }
+ */
+
+        // list and string[]
+/*         List<int> numbers = new List<int>{1,2,3,4,5,6,7,8};
+        numbers.Add(10);
+
+        foreach(int x in numbers)
+        {
+            Console.WriteLine($"{x}");
+        }
+/*  */
+       /*  bool correctInput;
+        do
+        {
+            Console.Write("Please enter your age: ");
+            int age = int.Parse(Console.ReadLine());
+            if (age >= 0 && age < 121)
+            {
+                Console.WriteLine($"Your age is: {age}");
+                correctInput = true;
+            }
+            else
+            correctInput=false;
+        } while(!correctInput); */
+    
+/*         Random newRandomNumber=new Random();
+        for(int i = 0; i < 100; i++)
+        {
+            int number=newRandomNumber.Next(1, 100);
+            Console.WriteLine($"{i}; {number}");
+        } */
+
+        
     }
+
+    
 }
