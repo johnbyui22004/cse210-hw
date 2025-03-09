@@ -14,8 +14,10 @@ class Journal
         Console.WriteLine($"Prompt: {prompt}");
         Console.Write("Your response: ");
         string response = Console.ReadLine();
+        Console.Write("What is one goal you have for tomorrow? "); // Ask for a goal
+        string goal = Console.ReadLine();
         string date = DateTime.Now.ToString("yyyy-MM-dd");
-        entries.Add(new Entry(date, prompt, response));
+        entries.Add(new Entry(date, prompt, goal, response));
         Console.WriteLine("Entry saved.");
     }
 
@@ -38,7 +40,7 @@ class Journal
         {
             foreach (var entry in entries)
             {
-                writer.WriteLine($"{entry.Date}|{entry.Prompt}|{entry.Response}");
+                writer.WriteLine($"{entry.Date}|{entry.Prompt}|{entry.Response}{entry.Goal}"); // Save Gpa;
             }
         }
         Console.WriteLine("Journal saved successfully.");
@@ -55,7 +57,7 @@ class Journal
                 string[] parts = line.Split('|');
                 if (parts.Length == 3)
                 {
-                    entries.Add(new Entry(parts[0], parts[1], parts[2]));
+                    entries.Add(new Entry(parts[0], parts[1], parts[2], parts[3]));
                 }
             }
             Console.WriteLine("Journal loaded successfully.");
