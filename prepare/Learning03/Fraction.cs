@@ -1,21 +1,8 @@
 class Fraction
 {
   
-    public int Top { get; set; }
-    public int Bottom 
-    { 
-        get { return _Bottom; }
-        set
-        {
-            if (value == 0)
-            {
-                throw new ArgumentException("Denominator cannot be zero.");
-            }
-            _Bottom = value;
-        }
-    }
-
-    private int _Bottom;
+    private int Top { get; set; }
+    private int Bottom { get; set; }
 
     
     public Fraction()
