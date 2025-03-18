@@ -10,7 +10,7 @@ public class Scripture
     {
         this.reference = reference;
         words = new List<Word>();
-        string[] wordArray = text.Split(' ');  // Split the text into words
+        string[] wordArray = text.Split(' ');  
         
         // Create Word objects for each word in the text
         foreach (var word in wordArray)

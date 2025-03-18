@@ -18,7 +18,7 @@ public class Reference
         this.book = book;
         this.chapter = chapter;
         this.verse = startVerse;
-        this.endVerse = endVerse;  // For range verses, endVerse is provided
+        this.endVerse = endVerse; 
     }
 
     public string GetFormattedReference()

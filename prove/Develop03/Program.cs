@@ -6,10 +6,10 @@ public class Program
 
     public static void Main()
     {
-        // Create a reference for the scripture
+        // Created a reference for the scripture
         Reference reference = new Reference("John", 3, 16);
         
-        // Create a scripture instance with the reference and text
+        // Created a scripture instance with the reference and text
         string text = "For God so loved the world that he gave his only begotten Son.";
         scripture = new Scripture(reference, text);
         
@@ -28,7 +28,7 @@ public class Program
             Console.WriteLine("Scripture: ");
             Console.WriteLine(scripture.GetFormattedScripture());
             
-            // Ask for user input
+            // Asking the user for input
             Console.WriteLine("\nPress Enter to hide a word, or type 'quit' to exit.");
             string userInput = Console.ReadLine();
 
@@ -41,7 +41,6 @@ public class Program
                 // Hide a word in the scripture
                 scripture.HideRandomWord();
                 
-                // Continue the loop
             }
         }
 
