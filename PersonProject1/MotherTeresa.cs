@@ -10,6 +10,6 @@ class MotherTeresa : Person
     
     public string DisplayMotherTeresaInfo()
     {
-        return $"Charity: {_charity}, {DisplayPersonInfo()}";
+        return $"Traits: {_charity}, {DisplayPersonInfo()}";
     }
 }

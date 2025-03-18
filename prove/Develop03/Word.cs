@@ -1,3 +1,4 @@
+// John Earl
 public class Word
 {
     private string text;
@@ -6,7 +7,7 @@ public class Word
     public Word(string text)
     {
         this.text = text;
-        this.isHidden = false;  // Words are visible initially
+        this.isHidden = false;
     }
 
     public string GetText() => text;

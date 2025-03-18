@@ -1,3 +1,4 @@
+// John Earl
 using System;
 using System.Collections.Generic;
 
@@ -10,9 +11,8 @@ public class Scripture
     {
         this.reference = reference;
         words = new List<Word>();
-        string[] wordArray = text.Split(' ');  
-        
-        // Create Word objects for each word in the text
+        string[] wordArray = text.Split(' ');
+
         foreach (var word in wordArray)
         {
             words.Add(new Word(word));

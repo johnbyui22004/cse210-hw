@@ -1,3 +1,4 @@
+// John Earl
 public class Reference
 {
     private string book;
@@ -10,7 +11,7 @@ public class Reference
         this.book = book;
         this.chapter = chapter;
         this.verse = verse;
-        this.endVerse = verse;  // For single verses, endVerse is the same as verse
+        this.endVerse = verse;
     }
 
     public Reference(string book, int chapter, int startVerse, int endVerse)

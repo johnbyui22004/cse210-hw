@@ -15,6 +15,9 @@ class Program
         myPoliceMan.SetHight(6);
         Console.WriteLine($"hight {myPoliceMan.GetHight()}");
 
+        MotherTeresa myMotherTeresa = new MotherTeresa("Charity", "Mother" , "Teresa", 77);
+        Console.WriteLine($"{myMotherTeresa.DisplayMotherTeresaInfo()}");
+
     }
     
 
