@@ -29,12 +29,13 @@ class Menu
                 break;
             case 2:
                 Console.Clear();
-                ReflectingActivity reflectingActivity = new ReflectingActivity(this); // Pass `this` (Menu instance)
+                ReflectingActivity reflectingActivity = new ReflectingActivity(this); 
                 reflectingActivity.StartReflectingActivity();
                 break;
             case 3:
                 Console.Clear();
-                Console.WriteLine("Listing activity started");
+                ListingActivity listingActivity = new ListingActivity(this); 
+                listingActivity.StartListingActivity();
                 break;
             case 4:
                 Console.Clear();

@@ -29,32 +29,42 @@ class ListingActivity : Activity
         Console.WriteLine("Press any key when you're ready...");
         Console.ReadKey();
 
-        // Select random prompt
-        string prompt = prompts[_random.Next(prompts.Count)];
+        // Start tracking time from now
+        int itemsListed = 0;
+        DateTime startTime = DateTime.Now;
         Console.Clear();
+                string prompt = prompts[_random.Next(prompts.Count)];
         Console.WriteLine(prompt);
         Console.WriteLine("\nGet ready to list as many things as you can!");
-
-        // Countdown before starting the list
-        StartCountdown(5);
-
-        int remainingTime = totalSeconds;
-        int itemsListed = 0;
-
-        while (remainingTime > 0)
+        Animation();
+        while (true)
         {
+
+
+
+
+ 
+
+            // Check if the total time has passed
+            if ((DateTime.Now - startTime).TotalSeconds >= totalSeconds)
+            {
+                break;
+            }
+
             Console.Write("\nEnter an item: ");
             string item = Console.ReadLine();
-            if (!string.IsNullOrEmpty(item)) itemsListed++;
+            if (!string.IsNullOrEmpty(item)) 
+            {
+                itemsListed++;
+            }
 
-            remainingTime--;
-            Thread.Sleep(1000); // Wait for 1 second between entries
         }
 
-        Console.WriteLine($"\nYou listed {itemsListed} items!");
+        Console.WriteLine($"\nGood job you listed {itemsListed} items!");
         Console.WriteLine("\nListing activity complete!");
-        Console.WriteLine("\nPress any key to return to the menu...");
-        Console.ReadKey();
+        Console.WriteLine("\nNow returning to the menu...");
+        
+        Animation();
         
         _menu.DisplayMenu(); // Return to the menu
     }

@@ -43,12 +43,16 @@ class ReflectingActivity : Activity
         Console.WriteLine("Press any key when you're ready...");
         Console.ReadKey();
         Console.Clear();
+
         // Select a random prompt each time the activity starts
         string prompt = prompts[_random.Next(prompts.Count)];
         Console.WriteLine(prompt);
         Console.WriteLine("\nReflect on this prompt and answer the following questions...");
 
         int remainingTime = totalSeconds;
+        
+        // Time for each question and reflection (You can adjust this value to suit the timing)
+        int questionTime = 5; // seconds for each question
 
         while (remainingTime > 0)
         {
@@ -56,18 +60,24 @@ class ReflectingActivity : Activity
             string question = questions[_random.Next(questions.Count)];
             Console.WriteLine($"\n{question}");
             Animation();
-            
-            Thread.Sleep(15000); // Wait for 1 second between questions
 
-            remainingTime -= 4; // Reduce remaining time after each question
-            if (remainingTime <= 0) break;
+            // Wait for the time allocated per question (You can adjust this if needed)
+            Thread.Sleep(questionTime * 1000); // Convert seconds to milliseconds
+
+            // Decrease remaining time by the time spent on the current question
+            remainingTime -= questionTime;
+
+            // If remaining time is less than question time, break the loop
+            if (remainingTime < questionTime)
+            {
+                break;
+            }
         }
 
         Console.WriteLine("\nGreat job! You have completed the Reflecting activity!");
         Console.WriteLine("\nNow returning to the menu...");
         Animation();
-        
+
         _menu.DisplayMenu(); // Return to the menu
     }
-
 }
