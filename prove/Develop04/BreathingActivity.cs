@@ -38,7 +38,9 @@ class BreathingActivity : Activity
             timeRemaining -= 4;
         }
 
-        Console.WriteLine("\nBreathing activity complete!\n");
+        Console.WriteLine($"\nGood job!! you completed {totalSeconds} Seconds of Breathing Excersize! Returning to Menu...\n");
+        Animation();
         _menu.DisplayMenu();
+        
     }
 }

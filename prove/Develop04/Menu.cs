@@ -4,7 +4,7 @@ class Menu
 
     public void DisplayMenu()
     {
-        Thread.Sleep(5000); // Delay for better user experience
+        
         Console.Clear();
         Console.WriteLine("Menu options:");
         Console.WriteLine(" 1. Start Breathing activity");
@@ -29,7 +29,8 @@ class Menu
                 break;
             case 2:
                 Console.Clear();
-                Console.WriteLine("Reflecting activity started");
+                ReflectingActivity reflectingActivity = new ReflectingActivity(this); // Pass `this` (Menu instance)
+                reflectingActivity.StartReflectingActivity();
                 break;
             case 3:
                 Console.Clear();
