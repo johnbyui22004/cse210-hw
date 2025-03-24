@@ -8,8 +8,13 @@ class MotherTeresa : Person
         _charity = charity;
     }
     
-    public string DisplayMotherTeresaInfo()
+    public string GetMotherTeresaInfo()
     {
-        return $"Traits: {_charity}, {DisplayPersonInfo()}";
+        return $"Traits: {_charity}, {GetPersonInfo()}";
+    }
+
+        public override string GetHobbies()
+    {
+        return $"I love being charitable";
     }
 }

@@ -8,9 +8,19 @@ class PoliceMan : Person
         _weapons = weapons;
     }
 
-    public string DisplayPoliceInfo()
+    public string GetPoliceInfo()
     {
-        return $"Weapons: {_weapons}, {DisplayPersonInfo()}";
+        return $"Weapons: {_weapons}, {GetPersonInfo()}";
+    }
+
+    public override string GetName()
+    {
+        return $"sargeant {base.GetName()}";
+    }
+
+        public override string GetHobbies()
+    {
+        return $" my hobbies are Shooting bad guys";
     }
 
 }
