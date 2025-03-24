@@ -10,7 +10,9 @@ class Menu
         Console.WriteLine(" 1. Start Breathing activity");
         Console.WriteLine(" 2. Start Reflecting activity");
         Console.WriteLine(" 3. Start Listing activity");
-        Console.WriteLine(" 4. Exit");
+        Console.WriteLine(" 4. Start Gratitude activity");
+        Console.WriteLine(" 5. Exit");
+        
         Console.Write("Please select an option: ");
         
         if (!int.TryParse(Console.ReadLine(), out _selectedNumber))
@@ -38,6 +40,11 @@ class Menu
                 listingActivity.StartListingActivity();
                 break;
             case 4:
+                Console.Clear();
+                GratitudeActivity gratitudeActivity = new GratitudeActivity(this);
+                gratitudeActivity.StartGratitudeActivity();
+                break;
+            case 5:
                 Console.Clear();
                 Console.WriteLine("Exiting...");
                 return;
