@@ -13,6 +13,7 @@ class Program
             Console.WriteLine("1 = Add Income");
             Console.WriteLine("2 = Add Expense");
             Console.WriteLine("3 = Get Budget Advice");
+            Console.WriteLine("4 = Reset Budget");
             Console.WriteLine("0 = Exit");
             string choice = Console.ReadLine();
 
@@ -44,6 +45,19 @@ class Program
 
                 case "3":
                     budget.ProvideBudgetAdvice();
+                    break;
+
+                case "4":
+                    Console.WriteLine("Are you sure you want to reset the budget? (y/n)");
+                    if (Console.ReadLine().ToLower() == "y")
+                    {
+                        budget.ResetBudget();
+                        budget.DisplayBudgetSummary();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Budget reset cancelled.");
+                    }
                     break;
 
                 default:

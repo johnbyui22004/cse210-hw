@@ -80,6 +80,14 @@ public class BudgetManager
         }
     }
 
+    public void ResetBudget()
+    {
+        _items.Clear();
+        _savingsGoal = 0m;
+        SaveToFile();
+        Console.WriteLine("Budget has been reset. All data cleared and savings goal set to $0.");
+    }
+
     public void DisplayBudgetSummary()
     {
         Console.WriteLine("\n=== Budget Summary ===");
