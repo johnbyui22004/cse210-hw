@@ -4,11 +4,17 @@ public class BudgetManager
     private decimal _savingsGoal;
     private const string FILE_PATH = "budget.txt";
 
-    public BudgetManager(decimal savingsGoal)
+    public BudgetManager()
     {
         _items = new List<BudgetItem>();
-        _savingsGoal = savingsGoal;
+        _savingsGoal = 0m;
         LoadFromFile();
+    }
+
+    public void SetSavingsGoal(decimal goal)
+    {
+        _savingsGoal = goal;
+        SaveToFile();
     }
 
     public void AddItem(BudgetItem item)
@@ -17,22 +23,28 @@ public class BudgetManager
         SaveToFile();
     }
 
-    public decimal CalculateTotalIncome()
+    public decimal CalculateTotalIncome(DateTime untilDate)
     {
         decimal total = 0;
         foreach (var item in _items)
         {
-            if (item is Income) total += item.Amount;
+            if (item is Income)
+            {
+                total += item.Amount * item.GetOccurrencesUntil(untilDate);
+            }
         }
         return total;
     }
 
-    public decimal CalculateTotalExpenses()
+    public decimal CalculateTotalExpenses(DateTime untilDate)
     {
         decimal total = 0;
         foreach (var item in _items)
         {
-            if (item is Expense) total += item.Amount;
+            if (item is Expense)
+            {
+                total += item.Amount * item.GetOccurrencesUntil(untilDate);
+            }
         }
         return total;
     }
@@ -68,13 +80,17 @@ public class BudgetManager
                 }
 
                 string[] parts = line.Split('|');
+                bool isRecurring = bool.Parse(parts[4]);
+                DateTime? firstOccurrence = parts[5] == "null" ? null : DateTime.Parse(parts[5]);
+                RecurrenceType recurrenceType = (RecurrenceType)int.Parse(parts[6]);
+
                 if (parts[0] == "Income")
                 {
-                    _items.Add(new Income(parts[1], decimal.Parse(parts[2]), parts[3]));
+                    _items.Add(new Income(parts[1], decimal.Parse(parts[2]), parts[3], isRecurring, firstOccurrence, recurrenceType));
                 }
                 else if (parts[0] == "Expense")
                 {
-                    _items.Add(new Expense(parts[1], decimal.Parse(parts[2]), parts[3]));
+                    _items.Add(new Expense(parts[1], decimal.Parse(parts[2]), parts[3], isRecurring, firstOccurrence, recurrenceType));
                 }
             }
         }
@@ -90,14 +106,16 @@ public class BudgetManager
 
     public void DisplayBudgetSummary()
     {
-        Console.WriteLine("\n=== Budget Summary ===");
+        DateTime currentDate = DateTime.Now;
+        Console.WriteLine($"\n=== Budget Summary as of {currentDate.ToShortDateString()} ===");
         foreach (var item in _items)
         {
-            Console.WriteLine(item.GetDescription());
+            int occurrences = item.GetOccurrencesUntil(currentDate);
+            Console.WriteLine($"{item.GetDescription()} - Total Occurrences: {occurrences}");
         }
 
-        decimal income = CalculateTotalIncome();
-        decimal expenses = CalculateTotalExpenses();
+        decimal income = CalculateTotalIncome(currentDate);
+        decimal expenses = CalculateTotalExpenses(currentDate);
         decimal balance = income - expenses;
 
         Console.WriteLine($"\nTotal Income: ${income}");
@@ -117,8 +135,9 @@ public class BudgetManager
 
     public void ProvideBudgetAdvice()
     {
-        decimal income = CalculateTotalIncome();
-        decimal expenses = CalculateTotalExpenses();
+        DateTime currentDate = DateTime.Now;
+        decimal income = CalculateTotalIncome(currentDate);
+        decimal expenses = CalculateTotalExpenses(currentDate);
         decimal balance = income - expenses;
 
         Console.WriteLine("\n=== Budget Advice ===");
